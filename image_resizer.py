@@ -27,9 +27,9 @@ folder_in = os.listdir(path_in[0])
 path_water, pos_water = None, None
 
 # Check if optional arguments are exist
-if args.wat != None:
+if args.wat is not None:
     path_water = args.wat
-    if args.pos != None:
+    if args.pos is not None:
         pos_water = args.pos[0]
     else:
         pos_water = 4 # The default value of watermark position — right below
@@ -69,14 +69,14 @@ for image_in in folder_in:
         # Save image. Make output-folder if it's not exists
         if not os.path.exists(path_out[0]):
             os.makedirs(path_out[0])
-            if path_water != None and pos_water != None:
+            if path_water is not None and pos_water is not None:
                 image_out = watermark(image_out, pos_water)
                 image_out.save(os.path.join(path_out[0], 'resized+watermark-' + image_in))
             else:
                 image_out.save(os.path.join(path_out[0], 'resized-' + image_in))
         # Just save image
         else:
-            if path_water != None and pos_water != None:
+            if path_water is not None and pos_water is not None:
                 image_out = watermark(image_out, pos_water)
                 image_out.save(os.path.join(path_out[0], 'resized+watermark-' + image_in))
             else:
